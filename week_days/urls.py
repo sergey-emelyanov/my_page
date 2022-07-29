@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<week_day>', views.week_days),
+    path('<int:week_day>', views.week_days_by_number),
+    path('<str:week_day>', views.week_days),
 
 
 ]
