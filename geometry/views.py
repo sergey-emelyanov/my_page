@@ -16,16 +16,13 @@ def get_circle_area(request, radius):
 	return HttpResponse(f"Площадь круга с радиусом {radius} составляет {pi * (radius ** 2):.2f} ")
 
 
-def rectangle_area(request, length: int, width: int):
-	redirect_url = reverse('rectangle', args=[length, width])
-	return HttpResponseRedirect(redirect_url)
+def rectangle_area(request):
+	return render(request, 'geometry/rectangle.html')
 
 
-def square_area(request, length: int):
-	redirect_url = reverse('square', args=[length])
-	return HttpResponseRedirect(redirect_url)
+def square_area(request):
+	return render(request, 'geometry/square.html')
 
 
-def circle_area(request, radius:int):
-	redirect_url = reverse('circle', args=[radius])
-	return HttpResponseRedirect(redirect_url)
+def circle_area(request):
+	return render(request, 'geometry/circle.html')

@@ -65,7 +65,11 @@ def elements(request, element):
 def signs_of_zodiack_by_str(request, sign_zodiack: str):
 	description = zodiac_dict.get(sign_zodiack)
 	if description:
-		return HttpResponse(f"{description}")
+		data = {
+			'description':description,
+			'sign_zodiack': sign_zodiack
+		}
+		return render(request, 'horoscope/index.ru.html', data)
 	else:
 		return HttpResponseNotFound(f"У нас нет такого знака как {sign_zodiack}")
 
@@ -83,7 +87,21 @@ def signs_of_zodiack_by_int(request, sign_zodiack: int):
 def float_value(request, value):
 	return HttpResponse(f"Передано вещественное число {value}")
 
+def keanu(request):
+	data = {
+		'year_born': 1964,
+		'city_born': 'Бейрут',
+		'movie_name': 'На гребне волны'
+	}
+	return render(request,'horoscope/keanu..html', context=data)
 
-def first_html(request):
-	response = render_to_string('horoscope/index.ru.html')
-	return HttpResponse(response)
+def get_guinness_world_records(request):
+    context = {
+        'power_man': 'Narve Laeret',
+        'bar_name': 'Bob’s BBQ & Grill',
+        'count_needle': 1790,
+    }
+    return render(request, 'horoscope/traning_template.html', context=context)
+
+
+
