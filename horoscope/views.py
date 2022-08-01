@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 zodiac_dict = {
 
@@ -77,3 +78,12 @@ def signs_of_zodiack_by_int(request, sign_zodiack: int):
 		return HttpResponseRedirect(redirect_url)
 	else:
 		return HttpResponseNotFound(f"У нас нет такого знака как {sign_zodiack}")
+
+
+def float_value(request, value):
+	return HttpResponse(f"Передано вещественное число {value}")
+
+
+def first_html(request):
+	response = render_to_string('horoscope/index.ru.html')
+	return HttpResponse(response)
