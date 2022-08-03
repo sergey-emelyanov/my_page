@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{sign_zodiack}}</title>
-</head>
-<body>
-<h1>Сайт посвященный знакам гороскопа</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    {{sign_zodiack}}
+{% endblock %}
+
+{% load static %}
+{% load my_filter %}
+{% block for_css %}
+
+<link rel="stylesheet" href="{% static 'horoscope/css/info.css' %}">
+
+{% endblock %}
+
+{% block content %}
+{% include 'nvagation/nav.html' %}
+<h1>{{description|split|first}}</h1>
+{% if description == None %}
+<h2>Нет такого знака {{sign_zodiack}}</h2>
+{% else %}
 <h2>{{description}}</h2>
-</body>
-</html>
-+
+{% endif %}
+{% endblock %}

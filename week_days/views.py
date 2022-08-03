@@ -33,3 +33,6 @@ def week_days_by_number(request, week_day: int):
 
 def index(request):
 	return render(request, 'week_days/greeting.html')
+
+def beautiful_table(request):
+	return render(request, 'week_days/beautiful_table.html')
