@@ -30,12 +30,10 @@ types_dict = {
 
 def index(request):
 	zodiacs = list(zodiac_dict)
-	li_elements = ' '
-	for sign in zodiacs:
-		redirect_path = reverse('horoscope_names', args=[sign])
-		li_elements += f"<li><a href={redirect_path}>{sign}</a></li>"
-	response = f"<ul>{li_elements}</ul>"
-	return HttpResponse(response)
+	context = {
+		'zodiacs':zodiacs
+	}
+	return render(request, 'horoscope/index.html', context=context)
 
 
 def type(request):
@@ -64,14 +62,12 @@ def elements(request, element):
 
 def signs_of_zodiack_by_str(request, sign_zodiack: str):
 	description = zodiac_dict.get(sign_zodiack)
-	if description:
-		data = {
+	data = {
 			'description':description,
 			'sign_zodiack': sign_zodiack
 		}
-		return render(request, 'horoscope/index.ru.html', data)
-	else:
-		return HttpResponseNotFound(f"У нас нет такого знака как {sign_zodiack}")
+	return render(request, 'horoscope/index.ru.html', data)
+
 
 
 def signs_of_zodiack_by_int(request, sign_zodiack: int):
