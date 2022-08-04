@@ -102,4 +102,5 @@ def get_guinness_world_records(request):
     return render(request, 'horoscope/traning_template.html', context=context)
 
 
-
+def for_training(request):
+	return render(request,'horoscope/my_filter.html')

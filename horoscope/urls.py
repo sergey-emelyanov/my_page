@@ -6,6 +6,7 @@ register_converter(converters.MyCustomFloatConverter, 'float')
 
 urlpatterns = [
     path('', views.index, name='horoscope_index'),
+    path('for_training',views.for_training),
     path('keanu', views.keanu),
     path('guinness', views.get_guinness_world_records),
     path('type', views.type),
